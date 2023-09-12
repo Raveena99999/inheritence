@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simulation game</title>
+</head>
+<body>
+    <h1>hy</h1>
+    <script>
+       function vehicle(brand, model, speed, fuelType) {
+          this.brand = brand
+          this.model = model
+          this.speed = speed
+          this.fuelType = fuelType
+       }
+       vehicle.prototype.accelerate = function(increase){
+           this.speed+=increase
+            console.log(`speed increases  ${this.speed}`)
+       }
+       vehicle.prototype.brake = function(decrease){
+        this.speed-= decrease
+        console.log(`speed decrease ${this.speed}`)
+    }
+    vehicle.prototype.refuel = function(){
+        console.log(`${this.brand} is refueling`)
+    }
+    
+
+    function car(brand, model, speed, fuelType,numberOfWheels){
+        vehicle.call(this,brand, model, speed, fuelType)
+       this.numberOfWheels = numberOfWheels
+    }
+
+    Object.setPrototypeOf(car.prototype,vehicle.prototype)
+    car.prototype.honk = function(){
+        console.log("honking sound")
+    }
+
+
+    function airplane(brand, model, speed, fuelType,numberOfEngines,hasLandingGear){
+          vehicle.call(this,brand, model, speed, fuelType)
+          this.numberOfEngines = numberOfEngines
+          this.hasLandingGear = hasLandingGear
+    }
+    Object.setPrototypeOf(airplane.prototype,vehicle.prototype)
+    airplane.prototype.takeOff = function(){
+        console.log("airoplane is taking off")
+    }
+
+
+
+
+    let vehicle1 = new vehicle ("scorpio","5a",100,"diesel")
+    let vehicle2 = new vehicle ("duster","7a",200,"diesel")
+console.log(vehicle1)
+console.log(vehicle2)
+vehicle1.accelerate(10)
+vehicle2.accelerate(20)
+vehicle1.brake(50)
+vehicle2.brake(100)
+vehicle1.refuel()
+vehicle2.refuel()
+
+
+ let car1 = new car("scorpio" ,"5a",100,"diesel",4 )
+ let car2 = new car("duster" ,"7a",200,"diesel",4 )
+ console.log(car1)
+ console.log(car2)
+ car1.honk()
+ car2.honk()
+
+
+let airplane1 = new airplane("abc","xx",50,"diesel",2,"yes")
+let airplane2 = new airplane("def","xy",60,"diesel",4,"yes")
+console.log(airplane1)
+console.log(airplane2)
+airplane1.takeOff()
+airplane2.takeOff()
+
+    </script>
+</body>
+</html>

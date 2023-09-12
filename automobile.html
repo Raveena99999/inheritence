@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>automobile</title>
+</head>
+<body>
+    <h1>hello</h1>
+    <script>
+    function Automobile(type , model ,brand ){
+             this.type = type;
+             this.model = model;
+             this.brand  = brand ;
+    }
+    Automobile.prototype.battery = function(){
+        console.log("battery is ok")
+    }
+    Automobile.prototype.accelerator = function(){
+        console.log('Accelerator is working')
+    }
+
+
+    function Fourwheeler(type , model ,brand,year,wheels){
+        Automobile.call(this,type , model ,brand)
+        this.year = year;
+        this.wheels = wheels
+    }
+
+Fourwheeler.prototype = Object.create(Automobile.prototype)
+
+ Fourwheeler.prototype.fuel = function(){
+        console.log(`Fuel of the ${this.model} is good`)
+       }
+
+
+
+  let automobile1 = new Automobile('car' ,'BMW', 'ss')
+  console.log(automobile1)
+
+
+       let car = new Fourwheeler ('car' ,'BMW', 'ss',2019, '4');
+             console.log(car)
+              car.battery()
+             car.accelerator();
+             car.fuel()
+
+       
+
+
+
+   
+     
+</script>
+</body>
+</html>
